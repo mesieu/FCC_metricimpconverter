@@ -1,11 +1,15 @@
 function ConvertHandler() {
   const isNum = /(\d*\D*\d){1,}/;
+  // const isNumTest =
   const isWhole = /^\d+$/;
   const isDecimal = /(^\d*\.\d+$)|(^\d+\.\d*$)/;
-  const isFraction = /^\d+\/\d+$/;
+  // const isFraction = /^\d+\/\d+$/;
+  const isFraction = /\//;
+  // const isDecimalFraction =
+  //   /(^(\d*\.\d+)|(^\d+\.\d*))\/((\d*\.\d+)|(\d+\.\d*))$/;
   const startsWithDot = /^\./;
   const endsWithDot = /\.%/;
-  const isUnit = /[a-z]+$/;
+  const isUnit = /[a-z]+$/i;
 
   this.getNum = function (input) {
     if (input === "") return 1;
@@ -30,6 +34,7 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     if (isUnit.test(input)) {
       initUnit = input.match(isUnit)[0];
+      return initUnit;
       if (
         initUnit === "mi" ||
         initUnit === "gal" ||
