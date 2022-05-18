@@ -1,5 +1,5 @@
 function ConvertHandler() {
-  const isNum = /(\d*\D*\d){1,}/;
+  const isNum = /\W*\d\W*/g;
   // const isNumTest =
   const isWhole = /^\d+$/;
   const isDecimal = /(^\d*\.\d+$)|(^\d+\.\d*$)/;
@@ -14,7 +14,7 @@ function ConvertHandler() {
   this.getNum = function (input) {
     if (input === "") return 1;
     if (isNum.test(input)) {
-      let initNum = input.match(isNum)[0];
+      let initNum = input.match(isNum).join("");
       if (isWhole.test(initNum)) {
         return Number(initNum);
       }
@@ -34,17 +34,12 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     if (isUnit.test(input)) {
       initUnit = input.match(isUnit)[0];
-      if (initUnit === "l") return "L";
-      if (
-        initUnit === "mi" ||
-        initUnit === "gal" ||
-        initUnit === "lbs" ||
-        initUnit === "km" ||
-        initUnit === "L" ||
-        initUnit === "kg"
-      ) {
-        return initUnit;
-      }
+      if (/gal/i.test(initUnit)) return "L";
+      if (/lbs/i.test(initUnit)) return "kg";
+      if (/mi/i.test(initUnit)) return "km";
+      if (/L/i.test(initUnit)) return "gal";
+      if (/kg/i.test(initUnit)) return "lbs";
+      if (/km/i.test(initUnit)) return "mi";
     }
     return "invalid unit";
   };
