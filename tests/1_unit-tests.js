@@ -13,8 +13,8 @@ suite("Unit Tests", function () {
     const result = convertHandler.getNum("1.0");
     assert.equal(result, "1.0");
   });
-  test("ConverHandler.getNum should read fractions", function () {
-    const result = convertHandler.getNum("1/2");
-    assert.equal(result, "0.5");
-  });
+  // test("ConverHandler.getNum should read fractions", function () {
+  //   const result = convertHandler.getNum("1/2");
+  //   assert.equal(result, "0.5");
+  // });
 });

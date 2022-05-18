@@ -25,7 +25,40 @@ function ConvertHandler() {
         return Number(initNum);
       }
       if (isFraction.test(initNum)) {
-        return eval(initNum);
+        const separatorIndex = initNum.match(isFraction).index;
+        let firstNum = initNum.slice(0, separatorIndex);
+        let secondNum = initNum.slice(separatorIndex + 1);
+
+        // Testing for firstNum
+        if (isWhole.test(firstNum)) {
+          firstNum = Number(firstNum);
+        } else if (isDecimal.test(firstNum)) {
+          if (startsWithDot.test(firstNum)) return Number("0" + firstNum);
+          if (endsWithDot.test(firstNum))
+            firstNum = Number(firstNum.slice(0, firstNum.length()));
+          firstNum = Number(firstNum);
+        } else {
+          firstNum = "invalid number";
+        }
+
+        // Testing for secondNum
+        if (isWhole.test(secondNum)) {
+          secondNum = Number(secondNum);
+        } else if (isDecimal.test(secondNum)) {
+          if (startsWithDot.test(secondNum)) return Number("0" + secondNum);
+          if (endsWithDot.test(secondNum))
+            secondNum = Number(secondNum.slice(0, secondNum.length()));
+          secondNum = Number(secondNum);
+        } else {
+          secondNum = "invalid number";
+        }
+        // return eval(initNum);
+        if (firstNum === "invalid number" || secondNum === "invalid number") {
+          return "invalid number";
+        } else {
+          let evalString = `${firstNum}/${secondNum}`;
+          return eval(evalString);
+        }
       }
       return "invalid number";
     }
