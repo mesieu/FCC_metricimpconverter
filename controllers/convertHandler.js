@@ -12,7 +12,6 @@ function ConvertHandler() {
   const isUnit = /[a-z]+$/i;
 
   this.getNum = function (input) {
-    if (input === "") return 1;
     if (isNum.test(input)) {
       let initNum = input.match(isNum).join("");
       if (isWhole.test(initNum)) {
@@ -59,9 +58,11 @@ function ConvertHandler() {
           let evalString = `${firstNum}/${secondNum}`;
           return eval(evalString);
         }
+      } else {
+        return "invalid number";
       }
-      return "invalid number";
     }
+    return 1;
   };
 
   this.getUnit = function (input) {
