@@ -34,7 +34,7 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     if (isUnit.test(input)) {
       initUnit = input.match(isUnit)[0];
-      return initUnit;
+      if (initUnit === "l") return "L";
       if (
         initUnit === "mi" ||
         initUnit === "gal" ||
