@@ -72,13 +72,13 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
 
-    if (/gal/i.test(initUnit)) return initNum * galToL;
-    if (/lbs/i.test(initUnit)) return initNum * lbsToKg;
-    if (/mi/i.test(initUnit)) return initNum * miToKm;
+    if (/gal/i.test(initUnit)) return (initNum * galToL).toFixed(5);
+    if (/lbs/i.test(initUnit)) return (initNum * lbsToKg).toFixed(5);
+    if (/mi/i.test(initUnit)) return (initNum * miToKm).toFixed(5);
 
-    if (/L/i.test(initUnit)) return initNum / galToL;
-    if (/kg/i.test(initUnit)) return initNum / lbsToKg;
-    if (/km/i.test(initUnit)) return initNum / miToKm;
+    if (/L/i.test(initUnit)) return (initNum / galToL).toFixed(5);
+    if (/kg/i.test(initUnit)) return (initNum / lbsToKg).toFixed(5);
+    if (/km/i.test(initUnit)) return (initNum / miToKm).toFixed(5);
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
