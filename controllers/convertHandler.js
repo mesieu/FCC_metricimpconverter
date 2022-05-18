@@ -34,12 +34,12 @@ function ConvertHandler() {
   this.getUnit = function (input) {
     if (isUnit.test(input)) {
       initUnit = input.match(isUnit)[0];
-      if (/gal/i.test(initUnit)) return "gal";
-      if (/lbs/i.test(initUnit)) return "lbs";
-      if (/mi/i.test(initUnit)) return "mi";
-      if (/L/i.test(initUnit)) return "L";
-      if (/kg/i.test(initUnit)) return "kg";
-      if (/km/i.test(initUnit)) return "km";
+      if (/^gal$/i.test(initUnit)) return "gal";
+      if (/^lbs$/i.test(initUnit)) return "lbs";
+      if (/^mi$/i.test(initUnit)) return "mi";
+      if (/^L$/i.test(initUnit)) return "L";
+      if (/^kg$/i.test(initUnit)) return "kg";
+      if (/^km$/i.test(initUnit)) return "km";
     }
     return "invalid unit";
   };
