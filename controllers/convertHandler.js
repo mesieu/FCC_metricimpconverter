@@ -40,8 +40,8 @@ function ConvertHandler() {
       ) {
         return initUnit;
       }
-      return "invalid unit";
     }
+    return "invalid unit";
   };
 
   this.getReturnUnit = function (initUnit) {

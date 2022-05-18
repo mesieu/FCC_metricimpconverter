@@ -19,7 +19,7 @@ module.exports = function (app) {
       returnUnit
     );
     if (initNum === "invalid number" && initUnit === "invalid unit")
-      return res.json("invalid number");
+      return res.json("invalid number and unit");
     if (initNum === "invalid number") return res.json("invalid number");
     if (initUnit === "invalid unit") return res.json("invalid unit");
     res.json({
